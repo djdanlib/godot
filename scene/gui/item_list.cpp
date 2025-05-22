@@ -71,27 +71,26 @@ int ItemList::add_item(const String &p_item, const Ref<Texture2D> &p_texture, bo
 	return item_id;
 }
 
-int ItemList::insert_item(int p_idx, const String &p_item, const Ref<Texture2D> &p_texture, bool p_selectable) {
-	if(p_idx == items.size()) {
+void ItemList::insert_item(int position, const String &p_item, const Ref<Texture2D> &p_texture, bool p_selectable) {
+	if(position == items.size()) {
 		add_item(p_item, p_texture, p_selectable);
-		return p_idx;
+		return;
 	}
-	ERR_FAIL_INDEX(p_idx, items.size());
+	ERR_FAIL_INDEX(position, items.size());
 
 	Item item;
 	item.icon = p_texture;
 	item.text = p_item;
 	item.selectable = p_selectable;
-	items.insert(p_idx, item);
+	items.insert(position, item);
 
-	items.write[p_idx].xl_text = _atr(p_idx, p_item);
-	_shape_text(p_idx);
+	items.write[position].xl_text = _atr(position, p_item);
+	_shape_text(position);
 
 	queue_accessibility_update();
 	queue_redraw();
 	shape_changed = true;
 	notify_property_list_changed();
-	return p_idx;
 }
 
 int ItemList::add_icon_item(const Ref<Texture2D> &p_item, bool p_selectable) {

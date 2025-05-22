@@ -180,13 +180,13 @@
 			</description>
 		</method>
 		<method name="insert_item">
-			<return type="int" />
-			<param index="0" name="p_idx" type="int" />
+			<return type="void" />
+			<param index="0" name="position" type="int" />
 			<param index="1" name="text" type="String" />
 			<param index="2" name="icon" type="Texture2D" default="null" />
 			<param index="3" name="selectable" type="bool" default="true" />
 			<description>
-				Inserts an item at the specified position in the item list with the specified text. Returns the index of the added item.
+				Inserts an item at the specified [param position] in the item list with the specified text.
 				Specify an [param icon], or use [code]null[/code] as the [param icon] for a list item with no icon.
 				If [param selectable] is [code]true[/code], the list item will be selectable.
 			</description>
