@@ -72,7 +72,7 @@ int ItemList::add_item(const String &p_item, const Ref<Texture2D> &p_texture, bo
 }
 
 void ItemList::insert_item(int position, const String &p_item, const Ref<Texture2D> &p_texture, bool p_selectable) {
-	if(position == items.size()) {
+	if (position == items.size()) {
 		add_item(p_item, p_texture, p_selectable);
 		return;
 	}
